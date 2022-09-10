@@ -40,9 +40,23 @@ module.exports = {
             `, [id],
             (error, results, fields) => {
                 if (error) {
-                    callback(error);
+                    return callback(error);
                 } else {
                     return callback(null, results);
+                }
+            }
+        )
+    },
+
+    getGymByEmail: (email, callback) => {
+        pool.query(
+            `SELECT * FROM loginauth where email = ?
+            `, [email],
+            (error, results, fields) => {
+                if (error) {
+                    return callback(error);
+                } else {
+                    return callback(null, results[0]);
                 }
             }
         )
