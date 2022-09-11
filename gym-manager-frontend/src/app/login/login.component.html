@@ -1,0 +1,19 @@
+<mat-card class="example-card">
+    <mat-card-header>
+        <mat-card-title>Login</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <form class="example-form" #loginForm="ngForm" (ngSubmit)="loginUser(loginForm.value)">
+            <br/>
+            <input matInput placeholder="Email" type="email" email name="email" required #name="ngModel" ngModel required>
+            <br/>
+            <span style="color: red;" *ngIf="name.invalid && name.touched">Invalid Email</span>
+            <br/><br/>
+            <input matInput placeholder="Password" type="password" name="password" required #password="ngModel" ngModel minlength="6">
+            <br/>
+            <span style="color: red;" *ngIf="password.invalid && password.touched">Invalid Password</span>
+            <br/><br/>
+            <button [disabled]="loginForm.invalid" mat-raised-button color="primary">Login</button>
+        </form>
+    </mat-card-content>
+</mat-card>

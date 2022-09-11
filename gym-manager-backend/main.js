@@ -3,9 +3,10 @@ const express = require("express");
 const app = express();
 const registerRouter = require("./api/registrations/registrations.router");
 app.use(express.json());
+var cors = require('cors')
 
 
-
+app.use(cors());
 app.use("/api/register", registerRouter);
 
 
