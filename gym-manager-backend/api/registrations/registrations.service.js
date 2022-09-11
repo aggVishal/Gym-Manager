@@ -22,7 +22,7 @@ module.exports = {
 
     getGyms: (callback) => {
         pool.query(
-            `SELECT * FROM loginauth
+            `SELECT gymId, gymName, fullName, email FROM loginauth
             `, [],
             (error, results, fields) => {
                 if (error) {
@@ -36,7 +36,7 @@ module.exports = {
 
     getGymById: (id, callback) => {
         pool.query(
-            `SELECT * FROM loginauth where gymId = ?
+            `SELECT gymId, gymName, fullName, email FROM loginauth where gymId = ?
             `, [id],
             (error, results, fields) => {
                 if (error) {

@@ -17,10 +17,11 @@ export class LoginComponent implements OnInit {
     this.authservice.login(item).subscribe(result=>{
       if(result.success){
         console.log(result);
-        alert("Welcome");
+        console.log(item);
+        alert("Welcome "+item.email);
       }
       else{
-        alert(result.result);
+        alert(result.message);
       }
     })
   }

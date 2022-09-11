@@ -10,13 +10,10 @@ module.exports = {
         registerGym(body, (err, result) => {
             if (err) {
                 console.log(err);
-                return res.status(500).json({
-                    success: 0,
-                    result: "Database connection error."
-                });
             } else {
                 return res.status(200).json({
                     success: 1,
+                    message: "Gym registered successfully.",
                     result: body
                 });
             }
@@ -28,13 +25,10 @@ module.exports = {
         getGyms((err, result) => {
             if (err) {
                 console.log(err);
-                return res.status(500).json({
-                    success: 0,
-                    result: "Database connection error."
-                });
             } else {
                 return res.status(200).json({
                     success: 1,
+                    message: "success",
                     result: result
                 });
             }
@@ -46,14 +40,18 @@ module.exports = {
         getGymById(id, (err, result) => {
             if (err) {
                 console.log(err);
-                return res.status(500).json({
+            }
+            if (result.length == 0) {
+                return res.json({
                     success: 0,
-                    result: "Database connection error."
-                });
+                    message: "Gym Id does not exist.",
+                    result: {}
+                })
             } else {
                 return res.status(200).json({
                     success: 1,
-                    result: result
+                    message: "success",
+                    result: result[0]
                 });
             }
         })
@@ -69,7 +67,8 @@ module.exports = {
             if (!results) {
                 return res.json({
                     success: 0,
-                    result: "Email is not registered!"
+                    message: "Email is either incorrect or not registered!",
+                    result: {}
                 })
             }
             const result = compareSync(body.password, results.password);
@@ -81,13 +80,14 @@ module.exports = {
                 });
                 return res.json({
                     success: 1,
-                    result: "Login successfully!",
+                    message: "Login successfully!",
                     token: jwt
                 });
             } else {
                 return res.json({
                     success: 0,
-                    result: "Incorrect Password!"
+                    message: "Incorrect Password!",
+                    token: ""
                 });
             }
         });
