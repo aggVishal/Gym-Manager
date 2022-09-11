@@ -1,7 +1,16 @@
-/* #login-main {
-    margin-top: 10%;
+#login-main {
+    padding-top: 5%;
     margin-left: 35%;
     margin-right: 35%;
+    padding-bottom: 30%;
+}
+
+#bg {
+    background-image: url("../../assets/images/bg.jpg");
+    height: 650 px;
+    color: #fff;
+    background-size: 100%;
+    background-size: cover;
 }
 
 .button {
@@ -27,5 +36,11 @@
     margin-bottom: 0%;
     display: flex;
     justify-content: center;
-    padding: 2%
-} */
+    padding: 2%;
+}
+
+#registerClick {
+    text-decoration: underline;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}

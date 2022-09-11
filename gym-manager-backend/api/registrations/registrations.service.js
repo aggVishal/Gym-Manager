@@ -3,10 +3,11 @@ const pool = require("../../config/database");
 module.exports = {
     registerGym: (data, callback) => {
         pool.query(
-            `insert into loginauth(gymName, fullName, email, password)  values(?,?,?,?)
+            `insert into loginauth(gymName, fullName,contact, email, password)  values(?,?,?,?,?)
             `, [
                 data.gymName,
                 data.fullName,
+                data.contact,
                 data.email,
                 data.password
             ],
@@ -22,7 +23,7 @@ module.exports = {
 
     getGyms: (callback) => {
         pool.query(
-            `SELECT gymId, gymName, fullName, email FROM loginauth
+            `SELECT gymId, gymName, fullName, contact, email FROM loginauth
             `, [],
             (error, results, fields) => {
                 if (error) {
@@ -36,7 +37,7 @@ module.exports = {
 
     getGymById: (id, callback) => {
         pool.query(
-            `SELECT gymId, gymName, fullName, email FROM loginauth where gymId = ?
+            `SELECT gymId, gymName, fullName,contact, email FROM loginauth where gymId = ?
             `, [id],
             (error, results, fields) => {
                 if (error) {

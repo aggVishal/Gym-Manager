@@ -1,28 +1,53 @@
-<!-- <div id="login-main">
-    <mat-card class="login-card">
-        <mat-card-title class="login-title">Login</mat-card-title>
-        <mat-card-content>
-            <form class="login-form" #loginForm="ngForm" (ngSubmit)="loginUser(loginForm.value)">
-                <br/>
-                <div class="login-input-div">
-                    <input class="login-input" matInput placeholder="Email" type="email" email name="email" required #name="ngModel" ngModel required>
+<div id="bg">
+    <div id="login-main">
+        <mat-card class="login-card">
+            <mat-card-title class="login-title">Register</mat-card-title>
+            <mat-card-content>
+                <form class="login-form" #registerForm="ngForm" (ngSubmit)="registerUser(registerForm.value)">
+                    <br/>
+                    <div class="login-input-div">
+                        <input class="login-input" matInput placeholder="Full name" type="name" name="fullName" required #fullName="ngModel" ngModel required>
 
-                    <span class="login-input" style="color: red;" *ngIf="name.invalid && name.touched">Invalid Email</span>
-                    <br/><br/>
-                </div>
+                        <span class="login-input" style="color: red;" *ngIf="fullName.invalid && fullName.touched">Invalid name.</span>
+                        <br/><br/>
+                    </div>
 
 
-                <div class="login-input-div">
-                    <input class="login-input" matInput placeholder="Password" type="password" name="password" required #password="ngModel" ngModel minlength="6">
+                    <div class="login-input-div">
+                        <input class="login-input" matInput placeholder="Gym name" type="name" name="gymName" required #gymName="ngModel" ngModel required>
 
-                    <span class="login-input" style="color: red;" *ngIf="password.invalid && password.touched">Invalid Password</span>
-                    <br/><br/>
-                </div>
+                        <span class="login-input" style="color: red;" *ngIf="gymName.invalid && gymName.touched">Invalid gym name.</span>
+                        <br/><br/>
+                    </div>
 
-                <button class="button" [disabled]="loginForm.invalid" mat-raised-button color="primary">Login</button>
-            </form>
-        </mat-card-content>
-    </mat-card>
-</div> -->
+                    <div class="login-input-div">
+                        <input class="login-input" matInput placeholder="Email" type="email" email name="email" required #email="ngModel" ngModel required>
 
-<div>register works</div>
+                        <span class="login-input" style="color: red;" *ngIf="email.invalid && email.touched">Invalid email.</span>
+                        <br/><br/>
+                    </div>
+
+
+                    <div class="login-input-div">
+                        <input class="login-input" matInput placeholder="Password" type="password" name="password" required #password="ngModel" ngModel minlength="6">
+
+                        <span class="login-input" style="color: red;" *ngIf="password.invalid && password.touched">Invalid password.</span>
+                        <br/><br/>
+                    </div>
+                    <div class="login-input-div">
+                        <input class="login-input" matInput placeholder="Confirm password" type="password" name="confirmPassword" required #confirmPassword="ngModel" ngModel minlength="6">
+
+                        <span class="login-input" style="color: red;" *ngIf="password.value!=confirmPassword.value && confirmPassword.touched">Password does not match.</span>
+                        <br/><br/>
+                    </div>
+
+                    <button class="button" [disabled]="registerForm.invalid" mat-raised-button color="primary">Register</button>
+
+                    <div id="registerClick">
+                        <a [routerLink]="['/login']">Back to login page</a>
+                    </div>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
