@@ -78,6 +78,14 @@ module.exports = {
                 const jwt = sign({ result: results }, process.env.JWT_KEY, {
                     expiresIn: "1h"
                 });
+                res.cookie('jwt', jwt, {
+                    maxAge: 60 * 60 * 1000, // 1 hr is max age of jwt token as a cookie
+                    httpOnly: true
+                });
+                res.cookie('gymId', results.gymId, {
+                    maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days is max age of gymId as a cookie
+                    httpOnly: true
+                });
                 return res.json({
                     success: 1,
                     message: "Login successfully!",

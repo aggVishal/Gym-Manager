@@ -1,26 +1,19 @@
-<mat-toolbar color="primary">
-    <mat-toolbar-row>
-        <span>My Gym Manager</span>
-        <span class="example-fill-remaining-space"></span>
-        <span class="align-center"></span>
-        <span class="example-spacer"></span>
-        <button mat-button>About</button>
-        <button mat-button>Contact</button>
-        <button mat-icon-button [matMenuTriggerFor]="menu">
-    <mat-icon>more_vert</mat-icon>
-  </button>
-        <mat-menu #menu="matMenu">
-            <button mat-menu-item>
-      <mat-icon>dialpad</mat-icon>
-      <span>Redial</span>
-    </button>
-            <button mat-menu-item disabled>
-      <mat-icon>voicemail</mat-icon>
-      <span>Check voicemail</span>
-    </button>
-            <button mat-menu-item>
-      <mat-icon>notifications_off</mat-icon>
-      <span>Disable alerts</span>
-    </button>
-        </mat-menu>
+<mat-toolbar class="navbar_container" id="navbar-section">
+    <mat-toolbar-row class="toolbar">
+        <div class="toolbar-contents">
+            <button mat-icon-button class="menu" fxShow="true" fxHide.gt-xs><mat-icon>menu</mat-icon></button>
+            <a [routerLink]="['/']" mat-icon-button class="pelto_logo">
+                <img class="logo-img" alt="GymManager" src="assets/images/logo2.jpeg" />
+            </a>
+            <div class="toolbar-buttons">
+                <a [routerLink]="['/']" fragment="about-section" class="navbar_button" mat-button>About Us</a>
+                <a [routerLink]="['/']" fragment="courses-section" class="navbar_button" mat-button>Courses</a>
+                <a target="_blank" class="navbar_button" [routerLink]="['/test-series']" mat-button>Online Test</a>
+                <a class="navbar_button" href="https://m.youtube.com/channel/UCVgfyO6RnwjGvJ-xPVd2Thw" target="_blank" mat-button>Youtube</a>
+                <a fragment="footer-section" class="navbar_button" href="#contact-section" class="navbar_button" mat-button>Contact Us</a>
+                <a class="login_button" href="https://web.neetkorner.com/login" mat-button>Login</a>
+            </div>
+        </div>
+
     </mat-toolbar-row>
+</mat-toolbar>
