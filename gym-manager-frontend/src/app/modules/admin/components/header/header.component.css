@@ -9,7 +9,7 @@
 
 #logoTitle {
     margin-top: 25px;
-    margin-left: -65%;
+    margin-left: -60%;
     color: #476176;
     font-weight: bold;
     cursor: pointer;
@@ -22,18 +22,11 @@
     padding-right: 10%;
 }
 
-.login_button {
-    color: #1756bd;
-    border: 2px solid #1756bd;
-    text-align: left;
-    text-decoration: none;
-    margin-left: 20px;
-}
-
 .toolbar-contents {
     display: flex;
     width: 100%;
     margin-left: 4%;
+    margin-right: 5%;
     justify-content: space-between;
 }
 

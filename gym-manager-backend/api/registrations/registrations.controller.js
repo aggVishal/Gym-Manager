@@ -76,7 +76,7 @@ module.exports = {
             if (result) {
                 results.password = undefined;
                 const jwt = sign({ result: results }, process.env.JWT_KEY, {
-                    expiresIn: "1m"
+                    expiresIn: "1hr"
                 });
                 // res.cookie('jwt', jwt, {
                 //     maxAge: 60 * 60 * 1000, // 1 hr is max age of jwt token as a cookie

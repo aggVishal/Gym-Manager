@@ -19,7 +19,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
-
+import { NgxUiLoaderModule,NgxUiLoaderHttpModule,NgxUiLoaderRouterModule } from "ngx-ui-loader";
 
 @NgModule({
   declarations: [
@@ -44,7 +44,18 @@ import { ForgetPasswordComponent } from './components/forget-password/forget-pas
     MatMenuModule,
     MatProgressSpinnerModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxUiLoaderModule.forRoot({
+      "fgsType": "square-jelly-box",
+      "fgsColor": "#fe5828",
+      "blur": 2,
+      "hasProgressBar": false,
+      "bgsOpacity": 0.5,
+    }),
+    NgxUiLoaderHttpModule.forRoot({
+      showForeground: true,
+    }),
+    NgxUiLoaderRouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,45 +3,52 @@
         <mat-card class="login-card">
             <mat-card-title class="login-title">Register</mat-card-title>
             <mat-card-content>
-                <form class="login-form" #registerForm="ngForm" (ngSubmit)="registerUser(registerForm.value)">
+                <form class="login-form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                     <br/>
                     <div class="login-input-div">
-                        <input class="login-input" matInput placeholder="Full name" type="name" name="fullName" required #fullName="ngModel" ngModel required>
+                        <input class="login-input" matInput placeholder="Full name*" type="name" name="fullName" formControlName="fullName">
 
-                        <span class="login-input" style="color: red;" *ngIf="fullName.invalid && fullName.touched">Invalid name.</span>
+                        <small class="validation-error" *ngIf="!registerForm.controls.fullName.valid && registerForm.controls.fullName.touched">Invalid name.</small>
                         <br/><br/>
                     </div>
 
 
                     <div class="login-input-div">
-                        <input class="login-input" matInput placeholder="Gym name" type="name" name="gymName" required #gymName="ngModel" ngModel required>
+                        <input class="login-input" matInput placeholder="Gym name*" type="name" name="gymName" formControlName="gymName">
 
-                        <span class="login-input" style="color: red;" *ngIf="gymName.invalid && gymName.touched">Invalid gym name.</span>
+                        <small class="validation-error" *ngIf="!registerForm.controls.gymName.valid && registerForm.controls.gymName.touched">Invalid gym name.</small>
                         <br/><br/>
                     </div>
 
                     <div class="login-input-div">
-                        <input class="login-input" matInput placeholder="Email" type="email" email name="email" required #email="ngModel" ngModel required>
+                        <input class="login-input" matInput placeholder="Contact*" type="name" name="contact" formControlName="contact">
 
-                        <span class="login-input" style="color: red;" *ngIf="email.invalid && email.touched">Invalid email.</span>
+                        <small class="validation-error" *ngIf="!registerForm.controls.contact.valid && registerForm.controls.contact.touched">Invalid gym name.</small>
+                        <br/><br/>
+                    </div>
+
+                    <div class="login-input-div">
+                        <input class="login-input" matInput placeholder="Email*" type="email" email name="email" formControlName="email">
+
+                        <small class="validation-error" *ngIf="!registerForm.controls.email.valid && registerForm.controls.email.touched">Invalid email.</small>
                         <br/><br/>
                     </div>
 
 
                     <div class="login-input-div">
-                        <input class="login-input" matInput placeholder="Password" type="password" name="password" required #password="ngModel" ngModel minlength="6">
+                        <input class="login-input" matInput placeholder="Password*" type="password" name="password" formControlName="password">
 
-                        <span class="login-input" style="color: red;" *ngIf="password.invalid && password.touched">Invalid password.</span>
+                        <small class="validation-error" *ngIf="!registerForm.controls.password.valid && registerForm.controls.password.touched">Invalid password.</small>
                         <br/><br/>
                     </div>
-                    <div class="login-input-div">
-                        <input class="login-input" matInput placeholder="Confirm password" type="password" name="confirmPassword" required #confirmPassword="ngModel" ngModel minlength="6">
+                    <!-- <div class="login-input-div">
+                        <input class="login-input" matInput placeholder="Confirm password*" type="password" name="confirmPassword">
 
-                        <span class="login-input" style="color: red;" *ngIf="password.value!=confirmPassword.value && confirmPassword.touched">Password does not match.</span>
+                        <small class="validation-error" *ngIf="password.value!=confirmPassword.value && confirmPassword.touched">Password does not match.</small>
                         <br/><br/>
-                    </div>
+                    </div> -->
 
-                    <button class="button" [disabled]="registerForm.invalid" mat-raised-button color="primary">Register</button>
+                    <button [disabled]="!registerForm.valid" class="button" mat-raised-button color="primary">Register</button>
 
                     <div id="registerClick">
                         <a [routerLink]="['/login']">Back to login page</a>

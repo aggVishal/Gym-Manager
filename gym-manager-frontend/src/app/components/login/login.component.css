@@ -7,10 +7,16 @@
 
 #bg {
     background-image: url("../../../assets/images/bg.jpg");
-    height: 650 px;
-    color: #fff;
     background-size: 100%;
-    background-size: cover;
+    overflow-y: hidden;
+    height: 100%;
+}
+
+.validation-error {
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+    color: red;
 }
 
 .button {

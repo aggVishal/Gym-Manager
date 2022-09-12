@@ -11,6 +11,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { ServicesComponent } from './components/services/services.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
+// import { NgxUiLoaderModule,NgxUiLoaderHttpModule } from "ngx-ui-loader";
 
 
 @NgModule({
@@ -27,7 +28,15 @@ import { MatIconModule } from '@angular/material/icon';
     CommonModule,
     AdminRoutingModule,
     MatToolbarModule,    
-    MatIconModule
+    MatIconModule,
+    // NgxUiLoaderModule.forRoot({
+    //   "fgsType": "square-jelly-box",
+    //   "fgsColor": "#fe5828",
+    //   "blur": 2,
+    // }),
+    // NgxUiLoaderHttpModule.forRoot({
+    //   showForeground: true,
+    // })
   ]
 })
 export class AdminModule { }

@@ -6,21 +6,21 @@
                 <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                     <br/>
                     <div class="login-input-div">
-                        <input class="login-input" matInput placeholder="Email" type="email" email name="email" required formControlName="email">
+                        <input class="login-input" matInput placeholder="Email*" type="email" name="email" formControlName="email">
 
-                        <!-- <span class="login-input" style="color: red;" *ngIf="name.invalid && name.touched">Invalid Email</span> -->
+                        <small *ngIf="!loginForm.controls.email?.valid && loginForm.controls.email?.touched" class="validation-error">Invalid Email</small>
                         <br/><br/>
                     </div>
 
 
                     <div class="login-input-div">
-                        <input class="login-input" matInput placeholder="Password" type="password" name="password" required minlength="6" formControlName="password">
+                        <input class="login-input" matInput placeholder="Password*" type="password" name="password" formControlName="password">
 
-                        <!-- <span class="login-input" style="color: red;" *ngIf="password.invalid && password.touched">Invalid Password</span> -->
+                        <small *ngIf="!loginForm.controls.password?.valid && loginForm.controls.password?.touched" class="validation-error">Invalid Password</small>
                         <br/><br/>
                     </div>
 
-                    <button class="button" mat-raised-button color="primary">Login</button>
+                    <button [disabled]="!loginForm.valid" class="button" mat-raised-button color="primary">Login</button>
 
                     <div id="registerClick">
                         <a [routerLink]="['/forget-password']">Forgot password</a>
