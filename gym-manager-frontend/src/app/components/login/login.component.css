@@ -6,7 +6,7 @@
 }
 
 #bg {
-    background-image: url("../../assets/images/bg.jpg");
+    background-image: url("../../../assets/images/bg.jpg");
     height: 650 px;
     color: #fff;
     background-size: 100%;
@@ -36,7 +36,7 @@
     margin-bottom: 0%;
     display: flex;
     justify-content: center;
-    padding: 2%;
+    padding: 2%
 }
 
 #registerClick {

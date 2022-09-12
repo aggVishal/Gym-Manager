@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
-import { LoginComponent } from './components/auth-components/login/login.component';
-import {RegisterComponent} from './components/auth-components/register/register.component'
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component'
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -13,7 +15,13 @@ const routes: Routes = [
     path: 'register', component: RegisterComponent
   },
   {
-    path: '', component: HomeComponent
+    path: 'forget-password', component: ForgetPasswordComponent
+  },
+  {
+    path: '', redirectTo: '/login', pathMatch: 'full'
+  },
+  {
+    path: 'admin', canActivate: [AuthGuard] , loadChildren: () => import('./modules/admin/admin.module').then((m) => m.AdminModule)
   },
   {
     path: '**', component: NotFoundComponent

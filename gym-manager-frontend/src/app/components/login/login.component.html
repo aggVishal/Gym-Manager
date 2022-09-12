@@ -1,0 +1,39 @@
+<div id="bg">
+    <div id="login-main">
+        <mat-card class="login-card">
+            <mat-card-title class="login-title">Login</mat-card-title>
+            <mat-card-content>
+                <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                    <br/>
+                    <div class="login-input-div">
+                        <input class="login-input" matInput placeholder="Email" type="email" email name="email" required formControlName="email">
+
+                        <!-- <span class="login-input" style="color: red;" *ngIf="name.invalid && name.touched">Invalid Email</span> -->
+                        <br/><br/>
+                    </div>
+
+
+                    <div class="login-input-div">
+                        <input class="login-input" matInput placeholder="Password" type="password" name="password" required minlength="6" formControlName="password">
+
+                        <!-- <span class="login-input" style="color: red;" *ngIf="password.invalid && password.touched">Invalid Password</span> -->
+                        <br/><br/>
+                    </div>
+
+                    <button class="button" mat-raised-button color="primary">Login</button>
+
+                    <div id="registerClick">
+                        <a [routerLink]="['/forget-password']">Forgot password</a>
+                    </div>
+                    <div id="registerClick">
+                        <a [routerLink]="['/register']">Click here to register</a>
+                    </div>
+
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
+
+
+<!-- <mat-spinner></mat-spinner> -->

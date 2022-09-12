@@ -1,4 +1,4 @@
-const { sign } = require("jsonwebtoken");
+const { sign, verify } = require("jsonwebtoken");
 const { genSaltSync, hashSync, compareSync } = require("bcrypt");
 const { registerGym, getGyms, getGymById, getGymByEmail } = require("./registrations.service");
 
@@ -76,16 +76,16 @@ module.exports = {
             if (result) {
                 results.password = undefined;
                 const jwt = sign({ result: results }, process.env.JWT_KEY, {
-                    expiresIn: "1h"
+                    expiresIn: "1m"
                 });
-                res.cookie('jwt', jwt, {
-                    maxAge: 60 * 60 * 1000, // 1 hr is max age of jwt token as a cookie
-                    httpOnly: true
-                });
-                res.cookie('gymId', results.gymId, {
-                    maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days is max age of gymId as a cookie
-                    httpOnly: true
-                });
+                // res.cookie('jwt', jwt, {
+                //     maxAge: 60 * 60 * 1000, // 1 hr is max age of jwt token as a cookie
+                //     httpOnly: true
+                // });
+                // res.cookie('gymId', results.gymId, {
+                //     maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days is max age of gymId as a cookie
+                //     httpOnly: true
+                // });
                 return res.json({
                     success: 1,
                     message: "Login successfully!",
@@ -101,5 +101,34 @@ module.exports = {
         });
 
 
+    },
+
+    loginUsingToken: (req, res) => {
+        const token = req.body.token;
+        if (token) {
+            const decode = verify(token, process.env.JWT_KEY, (err, result) => {
+                if (err) {
+                    res.json({
+                        success: 0,
+                        message: err.message,
+                        result: {}
+                    })
+                } else {
+                    res.json({
+                        success: 1,
+                        message: "Token is valid.",
+                        result: result.result
+                    })
+                }
+            });
+        } else {
+            res.json({
+                success: 0,
+                message: "Token not found.",
+                result: {}
+            })
+        }
     }
+
+
 }

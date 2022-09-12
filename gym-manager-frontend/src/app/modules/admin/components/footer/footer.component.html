@@ -1,0 +1,48 @@
+<footer id="footer" class="footer-section">
+    <section class="ft-main">
+        <div class="ft-main-item">
+            <a [routerLink]="['/admin/home']" (click)="checkToken()" mat-icon-button class="brand-image">
+                <img width="80px" alt="GymManagerLogo" src="../../../../../assets/images/GymManagerIcon-removebg-preview.png">
+            </a>
+            <br/>
+            <a style="font-weight: bold;" [routerLink]="['/admin/home']" (click)="checkToken()" mat-icon-button class="brand-image">
+                My Gym Manager
+            </a>
+        </div>
+        <div class="ft-main-item">
+            <h2 class="ft-title">Links</h2>
+            <ul>
+                <li>
+                    <a [routerLink]="['/admin/about']" (click)="checkToken()">About us</a>
+                </li>
+                <li>
+                    <a target="_blank" href="https://www.termsandconditionsgenerator.com/live.php?token=aiINAjPUvLImn4Zua4iH8NpKWJ3Rl7HQ">Terms and Conditions</a>
+                </li>
+                <li>
+                    <a target="_blank" href="https://www.privacypolicygenerator.info/live.php?token=1vT4lmY93qgu3YIPQAdoproJXFxY6mKr">Privacy Policy</a>
+                </li>
+            </ul>
+            <div class="copyright">&copy; 2022 Copyright My Gym Manager</div>
+
+        </div>
+        <div class="ft-main-item" id="contact-section">
+            <h2 class="ft-title">Contact</h2>
+            <ul>
+                <li>
+                    <a>Vishal Aggarwal</a>
+                </li>
+                <li>
+                    <a href="tel:+91-9711066260">
+                        <mat-icon inline=true>call</mat-icon> +91-9711066260</a>
+                </li>
+                <li>
+                    <a href="mailto:aggarwalvishal901@gmail.com">
+                        <mat-icon inline=true>mail</mat-icon> aggarwalvishal901@gmail.com</a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="ft-legal">
+    </section>
+</footer>

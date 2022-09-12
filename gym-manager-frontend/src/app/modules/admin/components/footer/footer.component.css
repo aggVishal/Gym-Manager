@@ -1,0 +1,162 @@
+/* Generic styling */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0px;
+}
+
+footer {
+    font-family: "Noto Sans JP", sans-serif;
+    background-color: #f7f7f7;
+    color: #476176;
+    line-height: 1.5;
+    /* position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%; */
+}
+
+footer a {
+    text-decoration: none;
+    color: #476176;
+    font-size: 16px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.ft-title {
+    color: #476176;
+    font-size: 1.375rem;
+    /* padding-bottom: ; */
+    font-weight: 600;
+    font-family: "Noto Sans JP", sans-serif;
+}
+
+
+/* Sticks footer to bottom */
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.container {
+    flex: 1;
+}
+
+
+/* Footer main */
+
+.ft-main {
+    padding: 1.25rem 1.875rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ft-main-item {
+    padding: 1.25rem;
+    min-width: 12.5rem;
+}
+
+
+/* Footer social */
+
+.ft-social {
+    padding: 0 1.875rem 1.25rem;
+}
+
+.ft-social-list {
+    display: flex;
+    justify-content: center;
+    padding-top: 1.25rem;
+    margin-left: -50px;
+}
+
+.ft-social-list li {
+    margin: 0.5rem;
+    font-size: 1.25rem;
+}
+
+
+/* Footer legal */
+
+.ft-legal {
+    padding: 0.9375rem 1.875rem;
+    background-color: #1756bd;
+}
+
+.ft-legal-list {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.ft-legal-list li {
+    margin: 0.125rem 0.625rem;
+    white-space: nowrap;
+}
+
+
+/* one before the last child */
+
+.ft-legal-list li:nth-last-child(2) {
+    flex: 1;
+}
+
+.icons {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: space-between;
+    width: 110%;
+    color: #1756bd;
+    margin-top: 40%;
+}
+
+.single-icon {
+    /* padding: 20px; */
+    text-decoration: none;
+}
+
+.fa {
+    color: #1756bd;
+}
+
+.img {
+    margin-top: 50%;
+    margin-left: -2px
+}
+
+.copyright {
+    margin-top: 12%;
+    color: #476176;
+}
+
+@media only screen and (min-width: 29.8125rem) {
+    .ft-main {
+        justify-content: space-evenly;
+    }
+}
+
+@media only screen and (min-width: 77.5rem) {
+    .ft-main {
+        justify-content: space-evenly;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    footer {
+        background-color: #fff;
+    }
+    .ft-main {
+        padding-left: 15px;
+    }
+}

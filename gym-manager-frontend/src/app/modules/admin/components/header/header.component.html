@@ -1,0 +1,18 @@
+<mat-toolbar class="navbar_container" id="navbar-section">
+    <mat-toolbar-row class="toolbar">
+        <div class="toolbar-contents">
+            <a [routerLink]="['/admin/home']" (click)="checkToken()" mat-icon-button>
+                <img class="logo-img" alt="GymManagerLogo" src="../../../../../assets/images/GymManagerIcon-removebg-preview.png" />
+            </a>
+            <div [routerLink]="['/admin/home']" (click)="checkToken()" mat-icon-button id="logoTitle">
+                My Gym Manager
+            </div>
+            <div class="toolbar-buttons">
+                <a [routerLink]="['/admin/about']" (click)="checkToken()" class="navbar_button" mat-button>About us</a>
+                <a [routerLink]="['/admin/contact']" (click)="checkToken()" class="navbar_button" mat-button>Contact us</a>
+                <a (click)="removeToken()" style="cursor: pointer;" class="navbar_button" mat-button>Logout</a>
+            </div>
+        </div>
+
+    </mat-toolbar-row>
+</mat-toolbar>
