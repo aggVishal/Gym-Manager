@@ -11,7 +11,7 @@ module.exports = {
                 if (err) {
                     res.json({
                         success: 0,
-                        result: "Invalid Token"
+                        result: "Token is invalid or got expired."
                     });
                 } else {
                     next();

@@ -32,10 +32,16 @@ export class LoginComponent implements OnInit {
         }
         else {
           alert(result.message);
+          if(result.message=='Email is either incorrect or not registered!'){
+
+            this.loginForm.reset();
+          }
+          this.loginForm.controls.password.reset();
         }
       },
-        (err) => {
-          alert(err.message);
+      (err) => {
+        alert(err.message);
+        this.loginForm.controls.password.reset();
         });
     }
 

@@ -8,10 +8,16 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
-import { ServicesComponent } from './components/services/services.component';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
-// import { NgxUiLoaderModule,NgxUiLoaderHttpModule } from "ngx-ui-loader";
+import { SettingsComponent } from './components/settings/settings.component';
+import { MatCardModule } from '@angular/material/card';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatTableModule} from '@angular/material/table';
+
+import { MatButtonModule } from "@angular/material/button";
+import { AddMemberDialogComponent } from './components/home/add-member-dialog/add-member-dialog.component';
+import {MatInputModule} from '@angular/material/input';
 
 
 @NgModule({
@@ -22,21 +28,21 @@ import { MatIconModule } from '@angular/material/icon';
     HomeComponent,
     AboutComponent,
     ContactComponent,
-    ServicesComponent
+    SettingsComponent,
+    AddMemberDialogComponent
   ],
+  entryComponents:[AddMemberDialogComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
     MatToolbarModule,    
     MatIconModule,
-    // NgxUiLoaderModule.forRoot({
-    //   "fgsType": "square-jelly-box",
-    //   "fgsColor": "#fe5828",
-    //   "blur": 2,
-    // }),
-    // NgxUiLoaderHttpModule.forRoot({
-    //   showForeground: true,
-    // })
+    MatCardModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatTableModule,
+    MatButtonModule,
+    MatInputModule,
   ]
 })
 export class AdminModule { }

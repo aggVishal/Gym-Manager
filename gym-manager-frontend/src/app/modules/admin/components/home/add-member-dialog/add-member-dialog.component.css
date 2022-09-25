@@ -1,0 +1,17 @@
+table {
+    width: 100%;
+}
+
+.validation-error {
+    margin: 0 auto;
+    color: red;
+    display: block;
+}
+
+.input-block {
+    padding: 5px;
+}
+
+.submit-button {
+    width: 100%;
+}

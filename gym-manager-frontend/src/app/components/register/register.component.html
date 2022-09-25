@@ -20,10 +20,17 @@
                         <br/><br/>
                     </div>
 
+                    <!-- <div class="login-input-div">
+                        <select class="form-control" name="country" id="country" formControlName="country">
+                            <option value="" disabled selected>Select Country</option>
+                            <option *ngFor="let country of countries" [value]="country.number">{{country.name}}</option>
+                       </select>
+                        <br/><br/>
+                    </div> -->
                     <div class="login-input-div">
                         <input class="login-input" matInput placeholder="Contact*" type="name" name="contact" formControlName="contact">
 
-                        <small class="validation-error" *ngIf="!registerForm.controls.contact.valid && registerForm.controls.contact.touched">Invalid gym name.</small>
+                        <small class="validation-error" *ngIf="!registerForm.controls.contact.valid && registerForm.controls.contact.touched">Invalid phone number.</small>
                         <br/><br/>
                     </div>
 

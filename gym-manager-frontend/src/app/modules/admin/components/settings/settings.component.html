@@ -1,0 +1,49 @@
+<div id="bg">
+    <div id="login-main">
+        <mat-card class="login-card">
+            <mat-card-title class="login-title">Settings</mat-card-title>
+            <mat-card-content>
+                <form class="login-form" [formGroup]="settingsForm" (ngSubmit)="onSubmit()">
+                    <tr>
+                        <td>Gym Name: </td>
+                        <td>
+                            <input formControlName="gymName" [disabled]="settingsForm.controls.gymName.untouched" />
+                        </td>
+                        <small class="validation-error" *ngIf="!settingsForm.controls.gymName.valid && settingsForm.controls.gymName.touched">Invalid name.</small>
+                    </tr>
+                    <tr>
+                        <td>Full Name:</td>
+                        <td>
+                            <input formControlName="fullName" />
+                        </td>
+                        <small class="validation-error" *ngIf="!settingsForm.controls.fullName.valid && settingsForm.controls.fullName.touched">Invalid name.</small>
+                    </tr>
+
+                    <tr>
+                        <td>Phone: </td>
+                        <td>
+                            <input formControlName="contact" />
+                        </td>
+                        <small class="validation-error" *ngIf="!settingsForm.controls.contact.valid && settingsForm.controls.contact.touched">Invalid phone. Please write 10 digit number.</small>
+                    </tr>
+                    <tr>
+                        <td>Personel email: </td>
+                        <td>
+                            <input formControlName="email" />
+                        </td>
+                        <small class="validation-error" *ngIf="!settingsForm.controls.email.valid && settingsForm.controls.email.touched">Invalid email.</small>
+                    </tr>
+                    <tr>
+                        <td>Gym email: </td>
+                        <td>
+                            <input formControlName="gymEmail" />
+                        </td>
+                        <small class="validation-error" *ngIf="!settingsForm.controls.gymEmail.valid && settingsForm.controls.gymEmail.touched">Invalid email.</small>
+                    </tr>
+
+                    <button [disabled]="settingsForm.untouched || settingsForm.invalid" class="button" mat-stroked-button color="primary">Save</button>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

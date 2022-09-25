@@ -1,0 +1,95 @@
+<!-- <p>add-member-dialog works!</p> -->
+
+
+
+<form [formGroup]="addMemberForm">
+    <div>
+        <div>
+            <div class="input-block">
+                <div>
+                    <label>Member Name</label>
+                </div>
+                <div>
+                    <div>
+                        <input matInput type="text" formControlName="memberName" placeholder="full name">
+                        <small class="validation-error" *ngIf="!addMemberForm.controls.memberName.valid && addMemberForm.controls.memberName.touched">Invalid name.</small>
+                    </div>
+                </div>
+            </div>
+            <div class="input-block">
+                <div>
+                    <label>Contact</label>
+                </div>
+                <div>
+                    <div>
+                        <input matInput type="text" formControlName="contact" placeholder="10 digits phone number">
+                        <small class="validation-error" *ngIf="!addMemberForm.controls.contact.valid && addMemberForm.controls.contact.touched">Invalid phone number.</small>
+                    </div>
+                </div>
+            </div>
+            <div class="input-block">
+                <div>
+                    <label>Email</label>
+                </div>
+                <div>
+                    <div>
+                        <input matInput type="email" formControlName="email" placeholder="email address">
+                        <small class="validation-error" *ngIf="!addMemberForm.controls.email.valid && addMemberForm.controls.email.touched">Invalid email.</small>
+                    </div>
+                </div>
+            </div>
+            <div class="input-block">
+                <div>
+                    <label>Address</label>
+                </div>
+                <div>
+                    <div>
+                        <input matInput type="address" formControlName="address" placeholder="Address">
+                        <small class="validation-error" *ngIf="!addMemberForm.controls.address.valid && addMemberForm.controls.address.touched">Invalid address.</small>
+                    </div>
+                </div>
+            </div>
+            <div class="input-block">
+                <div>
+                    <label>Start date</label>
+                </div>
+                <div>
+                    <div>
+                        <input matInput type="text" formControlName="firstDay" placeholder="yyyy-mm-dd">
+                        <small class="validation-error" *ngIf="!addMemberForm.controls.firstDay.valid && addMemberForm.controls.firstDay.touched">Invalid date.</small>
+                    </div>
+                </div>
+            </div>
+            <div class="input-block">
+                <div>
+                    <label>Membership Period</label>
+                </div>
+                <div>
+                    <div>
+                        <input matInput type="text" formControlName="memPeriod" placeholder="Membership period in months">
+                        <small class="validation-error" *ngIf="!addMemberForm.controls.memPeriod.valid && addMemberForm.controls.memPeriod.touched">Invalid period.</small>
+                    </div>
+                </div>
+            </div>
+            <div class="input-block">
+                <div>
+                    <label>Membership Price</label>
+                </div>
+                <div>
+                    <div>
+                        <input matInput type="text" formControlName="memPrize" placeholder="Membership Prize">
+                        <small class="validation-error" *ngIf="!addMemberForm.controls.memPrize.valid && addMemberForm.controls.memPrize.touched">Invalid price.</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-block">
+                <div>
+                    <button [disabled]="addMemberForm.invalid" (click)="addItem()" mat-raised-button color="primary" class="submit-button"> Add</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</form>

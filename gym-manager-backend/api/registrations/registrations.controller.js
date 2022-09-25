@@ -1,6 +1,6 @@
 const { sign, verify } = require("jsonwebtoken");
 const { genSaltSync, hashSync, compareSync } = require("bcrypt");
-const { registerGym, getGyms, getGymById, getGymByEmail } = require("./registrations.service");
+const { registerGym, getGyms, getGymById, getGymByEmail, updateGymDetails } = require("./registrations.service");
 
 module.exports = {
     registerGym: (req, res) => {
@@ -19,6 +19,7 @@ module.exports = {
             }
         })
     },
+
 
     getGyms: (req, res) => {
         const id = req.params.id;
@@ -57,6 +58,35 @@ module.exports = {
         })
     },
 
+    updateGymDetails: (req, res) => {
+        const body = req.body;
+
+        getGymById(body.gymId, (err, result) => {
+            if (err) {
+                console.log(err);
+            }
+            if (result.length == 0) {
+                return res.json({
+                    success: 0,
+                    message: "Gym Id does not exist.",
+                    result: {}
+                })
+            } else {
+                updateGymDetails(body, (err, result) => {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        return res.status(200).json({
+                            success: 1,
+                            message: "Gym updated successfully.",
+                            result: body
+                        });
+                    }
+                })
+            }
+        })
+    },
+
 
     login: (req, res) => {
         const body = req.body;
@@ -76,7 +106,7 @@ module.exports = {
             if (result) {
                 results.password = undefined;
                 const jwt = sign({ result: results }, process.env.JWT_KEY, {
-                    expiresIn: "1hr"
+                    expiresIn: "1d"
                 });
                 // res.cookie('jwt', jwt, {
                 //     maxAge: 60 * 60 * 1000, // 1 hr is max age of jwt token as a cookie

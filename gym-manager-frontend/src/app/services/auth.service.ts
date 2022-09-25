@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs'
 import { baseUrl } from 'src/environments/environment';
@@ -28,6 +28,23 @@ export class AuthService {
       return this.http.post(`${baseUrl}register/auth`, { "token": this.getToken() });
     }
   }
+
+  // getGymId(){
+  //   this.isLoggedInObservable().subscribe(result=>{
+  //     if(!result.success){
+  //       console.log(result.message);
+  //       this.logout();
+  //     }
+  //     else{
+  //       console.log(result.result.gymId)
+  //       return result.result.gymId;
+  //     }
+  //   },
+  //   (err)=>{
+  //     console.log(err.message);
+  //     this.logout();
+  //   });
+  // }
 
   isLoggedIn(): boolean {
     this.isLoggedInObservable().subscribe(result => {
@@ -59,4 +76,59 @@ export class AuthService {
   register(body: any): Observable<any> {
     return this.http.post(`${baseUrl}register`, body);
   }
+
+  getGymDetailsByGymIdObservable(id: any): Observable<any> {
+    if (!this.isLoggedIn()) {
+      this.logout();
+      return of({ success: 0 });
+    }
+    return this.http.get(`${baseUrl}register/${id}`, {
+      headers: new HttpHeaders().set('Authorization', `Bearer ${this.getToken()}`)
+    });
+  }
+
+  updateGym(body: any): Observable<any> {
+
+    if (!this.isLoggedIn()) {
+      this.logout();
+      return of({});
+    }
+    return this.http.post(`${baseUrl}register/update`, body, {
+      headers: new HttpHeaders().set('Authorization', `Bearer ${this.getToken()}`)
+    });
+  }
+
+
+  // Members
+
+  getMembersByGymIdObservable(id: any): Observable<any> {
+    if (!this.isLoggedIn()) {
+      this.logout();
+      return of({ success: 0 });
+    }
+    return this.http.get(`${baseUrl}members/gymId/${id}`, {
+      headers: new HttpHeaders().set('Authorization', `Bearer ${this.getToken()}`)
+    });
+  }
+
+  addMember(body: any): Observable<any> {
+    if (!this.isLoggedIn()) {
+      this.logout();
+      return of({ success: 0 });
+    }
+    return this.http.put(`${baseUrl}members`, body, {
+      headers: new HttpHeaders().set('Authorization', `Bearer ${this.getToken()}`)
+    });
+  }
+
+  deleteMember(id: any): Observable<any> {
+    if (!this.isLoggedIn()) {
+      this.logout();
+      return of({ success: 0 });
+    }
+    return this.http.delete(`${baseUrl}members/${id}`, {
+      headers: new HttpHeaders().set('Authorization', `Bearer ${this.getToken()}`)
+    });
+  }
+
 }

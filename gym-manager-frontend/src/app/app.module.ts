@@ -15,21 +15,21 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from './components/register/register.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
-import { HomeComponent } from './components/home/home.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 import { NgxUiLoaderModule,NgxUiLoaderHttpModule,NgxUiLoaderRouterModule } from "ngx-ui-loader";
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    NavbarComponent,
-    HomeComponent,
     NotFoundComponent,
-    ForgetPasswordComponent  
+    ForgetPasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +55,12 @@ import { NgxUiLoaderModule,NgxUiLoaderHttpModule,NgxUiLoaderRouterModule } from 
     NgxUiLoaderHttpModule.forRoot({
       showForeground: true,
     }),
-    NgxUiLoaderRouterModule
+    NgxUiLoaderRouterModule,
+    NgbModule,
+    MatSnackBarModule,
+    MatDialogModule,
+    MatInputModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

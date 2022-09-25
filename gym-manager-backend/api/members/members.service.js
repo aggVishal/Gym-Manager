@@ -3,7 +3,7 @@ const pool = require("../../config/database");
 module.exports = {
     addMember: (data, callback) => {
         pool.query(
-            `insert into members(gymId, memberName,contact, email,address,memberPic,memStart,memPeriod,memPrize,memStatus)  values(?,?,?,?,?,?,?,?,?,?)
+            `insert into members(gymId, memberName,contact, email,address,memberPic,firstDay,memStart,memPeriod,memPrize,memStatus)  values(?,?,?,?,?,?,?,?,?,?,1)
             `, [
                 data.gymId,
                 data.memberName,
@@ -11,10 +11,10 @@ module.exports = {
                 data.email,
                 data.address,
                 data.memberPic,
+                data.firstDay,
                 data.memStart,
                 data.memPeriod,
-                data.memPrize,
-                data.memStatus
+                data.memPrize
             ],
             (error, results, fields) => {
                 if (error) {

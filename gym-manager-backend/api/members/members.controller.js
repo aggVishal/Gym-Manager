@@ -55,14 +55,27 @@ module.exports = {
 
     updateMemberById: (req, res) => {
         const body = req.body;
-        updateMemberById(body, (err, result) => {
+        getMemberById(body.memberId, (err, result) => {
             if (err) {
                 console.log(err);
+            }
+            if (result.length == 0) {
+                return res.json({
+                    success: 0,
+                    message: "Member does not exist.",
+                    result: {}
+                })
             } else {
-                return res.status(200).json({
-                    success: 1,
-                    message: "Member updated successfully.",
-                    result: body
+                updateMemberById(body, (err, result) => {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        return res.status(200).json({
+                            success: 1,
+                            message: "Member updated successfully.",
+                            result: body
+                        });
+                    }
                 });
             }
         })

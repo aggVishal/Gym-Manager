@@ -4,7 +4,7 @@ import { AboutComponent } from './components/about/about.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { HomeComponent } from './components/home/home.component';
-import { ServicesComponent } from './components/services/services.component';
+import { SettingsComponent } from './components/settings/settings.component';
 
 const routes: Routes = [
   {
@@ -13,14 +13,17 @@ const routes: Routes = [
         path: 'home', component: HomeComponent
       },
       {
-        path: 'contact', component: ContactComponent
+        path: 'settings', component: SettingsComponent
       },
-      {
-        path: 'about', component: AboutComponent
-      },
-      {
-        path: 'services', component: ServicesComponent
-      },
+      // {
+      //   path: 'contact', component: ContactComponent
+      // },
+      // {
+      //   path: 'about', component: AboutComponent
+      // },
+      // {
+      //   path: 'services', component: ServicesComponent
+      // },
       {
         path: '', redirectTo: '/admin/home', pathMatch: 'full'
       }
