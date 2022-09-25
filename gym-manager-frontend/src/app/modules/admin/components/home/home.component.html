@@ -1,171 +1,94 @@
-<!-- <div class="members-section" id="members-section">
-    <div class="members-container">
-        <div class="title">Manage members</div>
-        <div class="all-members">
-
-            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-                <ng-container matColumnDef="memberName">
-                    <th mat-header-cell *matHeaderCellDef> Member Name </th>
-                    <td mat-cell *matCellDef="let element"> {{element.memberName}} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="memStart">
-                    <th mat-header-cell *matHeaderCellDef> Membership Start Date </th>
-                    <td mat-cell *matCellDef="let element"> {{element.memStart}} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="memPeriod">
-                    <th mat-header-cell *matHeaderCellDef> Membership period </th>
-                    <td mat-cell *matCellDef="let element"> {{element.memPeriod}} </td>
-                </ng-container>
-
-                <ng-container matColumnDef="memPrize">
-                    <th mat-header-cell *matHeaderCellDef> Membership Prize </th>
-                    <td mat-cell *matCellDef="let element"> {{element.memPrize}} </td>
-                </ng-container>
-                <ng-container matColumnDef="memStatus">
-                    <th mat-header-cell *matHeaderCellDef> Membership Status </th>
-                    <td mat-cell *matCellDef="let element"> {{element.memStatus}} </td>
-                </ng-container>
-
-                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-            </table>
-
-
-
-        </div>
-    </div>
-</div> -->
-
-
-
 <div class="container">
-
     <div class="button-section">
-
-        <button mat-raised-button color="primary" class="top-button">All Members</button>
-        <button mat-raised-button color="primary" class="top-button">Fee Defaulters</button>
         <button (click)="openAddMemberDialog()" mat-raised-button color="primary" class="top-button">+Add Member</button>
     </div>
-    <!-- <form [formGroup]="addMemberForm">
-        <div>
-            <div>
-                <div>
-                    <div>
-                        <label>Member Name</label>
-                    </div>
-                    <div>
-                        <div>
-                            <input type="text" formControlName="memberName" placeholder="full name">
-                            <small class="validation-error" *ngIf="!addMemberForm.controls.memberName.valid && addMemberForm.controls.memberName.touched">Invalid name.</small>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <label>Contact</label>
-                    </div>
-                    <div>
-                        <div>
-                            <input type="text" formControlName="contact" placeholder="10 digits phone number">
-                            <small class="validation-error" *ngIf="!addMemberForm.controls.contact.valid && addMemberForm.controls.contact.touched">Invalid phone number.</small>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <label>Email</label>
-                    </div>
-                    <div>
-                        <div>
-                            <input type="email" formControlName="email" placeholder="email address">
-                            <small class="validation-error" *ngIf="!addMemberForm.controls.email.valid && addMemberForm.controls.email.touched">Invalid email.</small>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <label>Address</label>
-                    </div>
-                    <div>
-                        <div>
-                            <input type="address" formControlName="address" placeholder="Address">
-                            <small class="validation-error" *ngIf="!addMemberForm.controls.address.valid && addMemberForm.controls.address.touched">Invalid address.</small>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <label>Start date</label>
-                    </div>
-                    <div>
-                        <div>
-                            <input type="text" formControlName="firstDay" placeholder="yyyy-mm-dd">
-                            <small class="validation-error" *ngIf="!addMemberForm.controls.firstDay.valid && addMemberForm.controls.firstDay.touched">Invalid date.</small>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <label>Membership Period</label>
-                    </div>
-                    <div>
-                        <div>
-                            <input type="text" formControlName="memPeriod" placeholder="Membership period in months">
-                            <small class="validation-error" *ngIf="!addMemberForm.controls.memPeriod.valid && addMemberForm.controls.memPeriod.touched">Invalid period.</small>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <label>Membership Price</label>
-                    </div>
-                    <div>
-                        <div>
-                            <input type="text" formControlName="memPrize" placeholder="Membership Prize">
-                            <small class="validation-error" *ngIf="!addMemberForm.controls.memPrize.valid && addMemberForm.controls.memPrize.touched">Invalid price.</small>
-                        </div>
-                    </div>
-                </div>
-
-                <div>
-                    <div>
-                        <button [disabled]="addMemberForm.invalid" (click)="addItem()" mat-raised-button color="primary"> Add</button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-    </form> -->
     <div>
-        <table>
-            <thead>
-                <tr>
-                    <th>Member Name</th>
-                    <th>Membership start date</th>
-                    <th>Membership period</th>
-                    <th>Membership Prize</th>
-                    <th>Membership Status</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let item of membersList">
-                    <td><span>{{item.memberName}}</span></td>
-                    <td><span>{{item.memStart}}</span></td>
-                    <td><span>{{item.memPeriod}}</span></td>
-                    <td><span>{{item.memPrize}}</span></td>
-                    <td><span>{{item.memStatus}}</span></td>
-                    <td>
-                        <button mat-mini-fab color="Basic" type="button" (click)="removeItem(item)">
+
+        <mat-tab-group>
+            <mat-tab label="All Members">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Member Name</th>
+                            <th>Membership start date</th>
+                            <th>Membership period</th>
+                            <th>Membership Prize</th>
+                            <th>Membership Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of allMembersList">
+                            <td><span>{{item.memberName}}</span></td>
+                            <td><span>{{item.memStart}}</span></td>
+                            <td><span>{{item.memPeriod}}</span></td>
+                            <td><span>{{item.memPrize}}</span></td>
+                            <td><span>{{item.memStatus}}</span></td>
+                            <td>
+                                <button mat-mini-fab color="Basic" type="button" (click)="removeItem(item)">
+                            <mat-icon>delete</mat-icon>
+                          </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </mat-tab>
+            <mat-tab label="Fee Defaulters">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Member Name</th>
+                            <th>Membership start date</th>
+                            <th>Membership period</th>
+                            <th>Membership Prize</th>
+                            <th>Membership Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of allMembersList">
+                            <td><span>{{item.memberName}}</span></td>
+                            <td><span>{{item.memStart}}</span></td>
+                            <td><span>{{item.memPeriod}}</span></td>
+                            <td><span>{{item.memPrize}}</span></td>
+                            <td><span>{{item.memStatus}}</span></td>
+                            <td>
+                                <button mat-mini-fab color="Basic" type="button" (click)="removeItem(item)">
                         <mat-icon>delete</mat-icon>
                       </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </mat-tab>
+            <mat-tab label="New Members">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Member Name</th>
+                            <th>Membership start date</th>
+                            <th>Membership period</th>
+                            <th>Membership Prize</th>
+                            <th>Membership Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of allMembersList">
+                            <td><span>{{item.memberName}}</span></td>
+                            <td><span>{{item.memStart}}</span></td>
+                            <td><span>{{item.memPeriod}}</span></td>
+                            <td><span>{{item.memPrize}}</span></td>
+                            <td><span>{{item.memStatus}}</span></td>
+                            <td>
+                                <button mat-mini-fab color="Basic" type="button" (click)="removeItem(item)">
+                        <mat-icon>delete</mat-icon>
+                      </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </mat-tab>
+        </mat-tab-group>
+
+
     </div>
 
 </div>

@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { HomeComponent } from '../home.component';
+import { HomeComponent } from '../../home.component';
 
 @Component({
   selector: 'app-add-member-dialog',

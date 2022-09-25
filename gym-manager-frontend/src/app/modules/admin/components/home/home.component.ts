@@ -3,7 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
-import { AddMemberDialogComponent } from './add-member-dialog/add-member-dialog.component';
+import { AddMemberDialogComponent } from './dialogs/add-member-dialog/add-member-dialog.component';
+import { YesNoDialogComponent } from './dialogs/yes-no-dialog/yes-no-dialog.component';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { AddMemberDialogComponent } from './add-member-dialog/add-member-dialog.
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  membersList: any;
+  allMembersList: any;
   gymId: any;
 
   constructor(private authservice: AuthService, private snackBar: MatSnackBar, private dialog: MatDialog) { }
@@ -33,8 +34,8 @@ export class HomeComponent implements OnInit {
 
         this.authservice.getMembersByGymIdObservable(this.gymId).subscribe(result => {
           if (result.success) {
-            this.membersList = result.result;
-            console.log("Array membersList is updated = ", this.membersList);
+            this.allMembersList = result.result;
+            console.log("Array allMembersList is updated = ", this.allMembersList);
             resolve(console.log("default updated successfully."));
           }
         }, (err) => {
@@ -55,28 +56,38 @@ export class HomeComponent implements OnInit {
 
 
   removeItem(item: any) {
-    this.membersList.forEach((value: any, index: any) => {
-      if (value == item) {
-        new Promise((resolve, reject) => {
-          this.authservice.deleteMember(value.memberId).subscribe(async result => {
-            if (result.success) {
-              await this.openSnackBar("Member deleted!", "Close");
-              resolve(console.log("Member deleted:",value.memberId));
-            }
-            else {
-              reject(console.log(result.message));
-            }
-          }, (err) => {
-            reject(console.log(err));
-          });
-        }).then(async (value) => {
-          await this.membersList.splice(index, 1);
-
-        }).catch(err => {
-          console.log(err);
+    const dialogRef = this.dialog.open(YesNoDialogComponent,{
+      data: {message: "Are you sure want to delete?"}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if(result=="true"){
+        this.allMembersList.forEach((value: any, index: any) => {
+          if (value == item) {
+            new Promise((resolve, reject) => {
+              this.authservice.deleteMember(value.memberId).subscribe(async result => {
+                if (result.success) {
+                  await this.openSnackBar("Member deleted!", "Close");
+                  resolve(console.log("Member deleted:",value.memberId));
+                }
+                else {
+                  reject(console.log(result.message));
+                }
+              }, (err) => {
+                reject(console.log(err));
+              });
+            }).then(async (value) => {
+              await this.allMembersList.splice(index, 1);
+              this.dialog.closeAll();    
+            }).catch(err => {
+              console.log(err);
+            })
+          }
         })
       }
     })
+
+
+    
   }
 
 
@@ -92,8 +103,8 @@ export class HomeComponent implements OnInit {
 
       this.authservice.getMembersByGymIdObservable(this.gymId).subscribe(result => {
         if (result.success) {
-          this.membersList = result.result;
-          console.log("Array membersList is updated = ", this.membersList);
+          this.allMembersList = result.result;
+          console.log("Array allMembersList is updated = ", this.allMembersList);
           console.log("dialog closed");
         }
       }, (err) => {

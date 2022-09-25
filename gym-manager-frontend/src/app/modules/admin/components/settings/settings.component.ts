@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../../services/auth.service';
 import { Router } from '@angular/router';
-import { FormControl, FormGroup, Validators } from '@angular/forms'
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { YesNoDialogComponent } from '../home/dialogs/yes-no-dialog/yes-no-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-settings',
@@ -11,7 +14,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms'
 
 
 export class SettingsComponent implements OnInit {
-  constructor(private authservice: AuthService, private router: Router) { }
+  constructor(private authservice: AuthService, private router: Router, private snackBar: MatSnackBar, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.authservice.isLoggedInObservable().subscribe(result => {
@@ -46,22 +49,32 @@ export class SettingsComponent implements OnInit {
     gymEmail: new FormControl('', [Validators.email])
   });
 
-  onSubmit(): void {
-    console.log(this.settingsForm.value);
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+    });
+  }
 
-    if (this.settingsForm.valid) {
-      this.authservice.updateGym(this.settingsForm.value).subscribe(result => {
-        if (result.success) {
-          alert('Updated successfully');
+  onSubmit(): void {
+    const dialogRef = this.dialog.open(YesNoDialogComponent, {
+      data: { message: "Are you sure want to update?" }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result == "true") {
+        if (this.settingsForm.valid) {
+          this.authservice.updateGym(this.settingsForm.value).subscribe(result => {
+            if (result.success) {
+              this.openSnackBar('Updated successfully', 'Close')
+            }
+            else {
+              console.log(result);
+            }
+          },
+            (err) => {
+              console.log(err.message);
+            });
         }
-        else {
-          console.log(result);
-          alert(result.message);
-        }
-      },
-        (err) => {
-          alert(err.message);
-        });
-    }
+      }
+    })
   };
 }

@@ -16,8 +16,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatTableModule} from '@angular/material/table';
 
 import { MatButtonModule } from "@angular/material/button";
-import { AddMemberDialogComponent } from './components/home/add-member-dialog/add-member-dialog.component';
+import { AddMemberDialogComponent } from './components/home/dialogs/add-member-dialog/add-member-dialog.component';
 import {MatInputModule} from '@angular/material/input';
+import {MatTabsModule} from '@angular/material/tabs';
+import { YesNoDialogComponent } from './components/home/dialogs/yes-no-dialog/yes-no-dialog.component';
 
 
 @NgModule({
@@ -29,7 +31,8 @@ import {MatInputModule} from '@angular/material/input';
     AboutComponent,
     ContactComponent,
     SettingsComponent,
-    AddMemberDialogComponent
+    AddMemberDialogComponent,
+    YesNoDialogComponent
   ],
   entryComponents:[AddMemberDialogComponent],
   imports: [
@@ -43,6 +46,7 @@ import {MatInputModule} from '@angular/material/input';
     MatTableModule,
     MatButtonModule,
     MatInputModule,
+    MatTabsModule,
   ]
 })
 export class AdminModule { }

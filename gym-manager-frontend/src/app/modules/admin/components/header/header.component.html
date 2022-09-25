@@ -10,7 +10,7 @@
             <div class="toolbar-buttons">
                 <a [routerLink]="['/admin']" (click)="checkToken()" class="navbar_button" mat-button>Home</a>
                 <a [routerLink]="['/admin/settings']" (click)="checkToken()" class="navbar_button" mat-button>Settings</a>
-                <a (click)="removeToken()" style="cursor: pointer;" class="navbar_button" mat-button>Logout</a>
+                <a (click)="logout()" style="cursor: pointer;" class="navbar_button" mat-button>Logout</a>
             </div>
         </div>
 
