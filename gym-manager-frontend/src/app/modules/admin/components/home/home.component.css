@@ -18,3 +18,8 @@ table {
 .top-button {
     margin-right: 10px;
 }
+
+.image {
+    width: 40px;
+    height: fit-content;
+}

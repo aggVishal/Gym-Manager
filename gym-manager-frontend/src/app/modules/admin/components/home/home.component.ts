@@ -48,7 +48,7 @@ export class HomeComponent implements OnInit {
   });
 
   openSnackBar(message: string, action: string) {
-    this.snackBar.open(message, action,{
+    this.snackBar.open(message, action, {
       duration: 2000,
     });
   }
@@ -56,18 +56,19 @@ export class HomeComponent implements OnInit {
 
 
   removeItem(item: any) {
-    const dialogRef = this.dialog.open(YesNoDialogComponent,{
-      data: {message: "Are you sure want to delete?"}
+    const dialogRef = this.dialog.open(YesNoDialogComponent, {
+      data: { message: "Are you sure want to delete?" }
     });
     dialogRef.afterClosed().subscribe(result => {
-      if(result=="true"){
+      if (result == "true") {
         this.allMembersList.forEach((value: any, index: any) => {
           if (value == item) {
             new Promise((resolve, reject) => {
               this.authservice.deleteMember(value.memberId).subscribe(async result => {
                 if (result.success) {
                   await this.openSnackBar("Member deleted!", "Close");
-                  resolve(console.log("Member deleted:",value.memberId));
+                  await this.authservice.deleteAvatar(this.allMembersList.memberPic);
+                  resolve(console.log("Member deleted:", value.memberId));
                 }
                 else {
                   reject(console.log(result.message));
@@ -77,7 +78,7 @@ export class HomeComponent implements OnInit {
               });
             }).then(async (value) => {
               await this.allMembersList.splice(index, 1);
-              this.dialog.closeAll();    
+              this.dialog.closeAll();
             }).catch(err => {
               console.log(err);
             })
@@ -85,33 +86,29 @@ export class HomeComponent implements OnInit {
         })
       }
     })
-
-
-    
   }
 
 
-  
+
 
 
   openAddMemberDialog() {
     const dialogRef = this.dialog.open(AddMemberDialogComponent, {
       width: '250px',
-      data: {gymId: this.gymId},
+      data: { gymId: this.gymId },
     });
     dialogRef.afterClosed().subscribe(result => {
-
-      this.authservice.getMembersByGymIdObservable(this.gymId).subscribe(result => {
-        if (result.success) {
-          this.allMembersList = result.result;
-          console.log("Array allMembersList is updated = ", this.allMembersList);
-          console.log("dialog closed");
-        }
-      }, (err) => {
-        console.log(err);
-      });
-
-
+      if (result == "true") {
+        this.authservice.getMembersByGymIdObservable(this.gymId).subscribe(result => {
+          if (result.success) {
+            this.allMembersList = result.result;
+            console.log("Array allMembersList is updated = ", this.allMembersList);
+            console.log("dialog closed");
+          }
+        }, (err) => {
+          console.log(err);
+        });
+      }
     });
   }
 

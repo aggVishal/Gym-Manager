@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs'
-import { baseUrl } from 'src/environments/environment';
+import { baseUrl, s3imageURL } from 'src/environments/environment';
 import { Router } from '@angular/router';
 
 @Injectable({
@@ -129,6 +129,24 @@ export class AuthService {
     return this.http.delete(`${baseUrl}members/${id}`, {
       headers: new HttpHeaders().set('Authorization', `Bearer ${this.getToken()}`)
     });
+  }
+
+  uploadAvatar(imageId: any, imageFile: any){
+    if (!this.isLoggedIn()) {
+      this.logout();
+      return of({ success: 0 });
+    }
+    return this.http.put(`${s3imageURL}/${imageId}`,imageFile, {
+      headers: new HttpHeaders().set('Content-Type', 'multipart/form-data')
+    })
+  }
+
+  deleteAvatar(imageId: any){
+    if (!this.isLoggedIn()) {
+      this.logout();
+      return of({ success: 0 });
+    }
+    return this.http.delete(`${s3imageURL}/${imageId}`)
   }
 
 }

@@ -61,7 +61,7 @@ export class AddMemberDialogComponent implements OnInit {
         }).then(async (value) => {
     
           await this.openSnackBar("Member added!", "Close");
-          this.dialogRef.close();
+          this.dialogRef.close("true");
     
         }).catch(err => {
           console.log(err);

@@ -9,6 +9,7 @@
                 <table>
                     <thead>
                         <tr>
+                            <th></th>
                             <th>Member Name</th>
                             <th>Membership start date</th>
                             <th>Membership period</th>
@@ -18,6 +19,7 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let item of allMembersList">
+                            <td><img src="{{item.memberPic}}" class="image" alt="{{item.memberName}}-pic"></td>
                             <td><span>{{item.memberName}}</span></td>
                             <td><span>{{item.memStart}}</span></td>
                             <td><span>{{item.memPeriod}}</span></td>

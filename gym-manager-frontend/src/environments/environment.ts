@@ -7,6 +7,7 @@ export const environment = {
 };
 
 export const baseUrl = "http://localhost:3000/api/";
+export const s3imageURL = "https://avatar-my-gym-manager.s3.ap-south-1.amazonaws.com/";
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
